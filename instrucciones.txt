@@ -1,0 +1,7 @@
+// instalacion
+//=====Laravel Debugbar
+https://github.com/barryvdh/laravel-debugbar
+composer require barryvdh/laravel-debugbar --dev
+
+//======crea logueo
+php artisan make:auth
