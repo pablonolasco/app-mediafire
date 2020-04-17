@@ -8,3 +8,11 @@ php artisan make:auth
 
 //======= error al subir archivo
 git push -f origin master
+
+//======para generar webpack
+npm install
+//=======laravel mix compila js y sass
+ npm run watch
+
+ //====imagenes gratis
+ unsplash, flat icon
