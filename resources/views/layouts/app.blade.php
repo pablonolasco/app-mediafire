@@ -53,14 +53,31 @@
              <a class="dropdown-item" href="#">Preguntas frecuentes</a>
            </div>
          </li>
+         @guest
          <li class="nav-item">
          <a href="{{route('login')}}" class="btn btn-outline-primary">Ingresar</a>
          </li>
+         @else
+          <li>
+
+             <a class="logout btn btn-outline-danger" href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+              <i class="fas fas-power-off"></i>
+                           Cerrar sesión
+            </a>
+          </li>
+
+         @endguest
+
+      
        </ul>
      </div>
      </nav>
   </header>
-
+   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+   </form>
   @yield('content')
 
      

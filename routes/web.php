@@ -10,11 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//====Frontend
 Route::view('/','index')->name('home');
 Route::view('/secure', 'secure')->name('secure');
 
-
+//===Auth
 Auth::routes();
-
+//===Admin
 Route::get('/home', 'HomeController@index')->name('dashboard');
