@@ -18,3 +18,5 @@ Route::view('/secure', 'secure')->name('secure');
 Auth::routes();
 //===Admin
 Route::get('/home', 'HomeController@index')->name('dashboard');
+
+

@@ -27,3 +27,10 @@ https://code.jquery.com/jquery-3.1.1.min.js
 //======fontawesome
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+//=========== comando que sirve para linkear donde se van a almacenar los archivos storage/app/public
+php artisan storage:link
+
+//=======crear modelo y controlador
+php artisan make:model Files -mc
+
