@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //=====un usuario pude tener muchos archivos
+    public function files()
+    {
+        return $this->hasMany(File::class,'id_nu_archivo');
+    }
 }

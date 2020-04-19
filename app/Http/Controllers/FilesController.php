@@ -7,4 +7,7 @@ use Illuminate\Http\Request;
 class FilesController extends Controller
 {
     //
+    public function index(){
+        
+    }
 }

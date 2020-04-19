@@ -17,6 +17,19 @@ Route::view('/secure', 'secure')->name('secure');
 //===Auth
 Auth::routes();
 //===Admin
-Route::get('/home', 'HomeController@index')->name('dashboard');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/home', 'HomeController@index')->name('dashboard');    
+});
+
+//===Files
+Route::group(['prefix' => 'files'], function () {
+    Route::get('documents/{id}','FilesController@index')->name('archivo.buscar');
+    Route::get('documents/subir','FilesController@index')->name('archivo.mostrar');
+    Route::post('documents/subir','FilesController@store')->name('archivo.subir');
+    Route::post('documents/editar/{id}','FilesController@edit')->name('archivo.editar');
+    Route::post('documents/eliminar{id}','FilesController@destroy')->name('archivo.eliminar');
+    
+    
+});
 
 

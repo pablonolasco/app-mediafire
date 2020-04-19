@@ -14,8 +14,13 @@ class CreateFilesTable extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_nu_archivo');
+            $table->string('ln_nombre');
+            $table->string('ln_tipo');
+            $table->string('ln_extension');
+            $table->integer("id_nu_user")->unsigned();
             $table->timestamps();
+            $table->foreign("id_nu_user")->references("id")->on('users')->onDelete("cascade");
         });
     }
 
