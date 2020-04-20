@@ -31,13 +31,13 @@
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <a class="navbar-brand ml-4" href="#">
-            <img src="../img/logo-white.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="{{ asset('img/logo-white.svg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
             BuffaloSafe
         </a>
 
         <div class="container mt-4 mb-2">
             <div class="mb-2">
-                <img src="img/users/user.jpg" class="img-responsive" style="border-radius: 50%;" alt="" width="70">
+                <img src="{{ asset('img/users/user.jpg') }}" class="img-responsive" style="border-radius: 50%;" alt="" width="70">
             </div>
             <div class="profile-usertitle">
                 <div class="profile-usertitle-name">Brayan Angarita</div>
@@ -67,6 +67,8 @@
                 <a href="#filesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-file-upload"></i> Mis archivos</a>
                 <ul class="collapse list-unstyled" id="filesSubmenu">
                     <li>
+                        <a href="{{ route('archivo.crear') }}">Agregar archivos</a>
+                    </li> <li>
                         <a href="#">Imágenes</a>
                     </li>
                     <li>
@@ -76,7 +78,7 @@
                         <a href="#">Documentos</a>
                     </li>
                     <li>
-                        <a href="#">ZIP</a>
+                        <a href="#">Audio</a>
                     </li>
                 </ul>
             </li>
@@ -136,6 +138,26 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a>@yield('page')</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
 @yield('content')
 

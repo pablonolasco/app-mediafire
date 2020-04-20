@@ -24,7 +24,7 @@ Auth::routes();
 //===File
 Route::group(['prefix' => 'files'], function () {
     Route::get('documents/','FilesController@index')->name('archivo.buscar');
-    Route::get('documents/subir','FilesController@create')->name('archivo.crear');
+    Route::get('documents/crear','FilesController@create')->name('archivo.crear');
     Route::post('documents/subir','FilesController@store')->name('archivo.subir');
     Route::post('documents/editar/{id}','FilesController@edit')->name('archivo.editar');
     Route::post('documents/eliminar{id}','FilesController@destroy')->name('archivo.eliminar');
