@@ -8,7 +8,7 @@ class File extends Model
 {
     //
     protected $fillable = [
-        'ln_nombre', 'ln_tipo', 'ln_extension',
+        'ln_nombre', 'ln_tipo', 'ln_extension','id_nu_user'
     ];
 
     //=====usuario tiene un archivo

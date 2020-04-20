@@ -31,32 +31,42 @@ class FilesController extends Controller
 
     public function store(Request $request)
     {
-        //=====obtiene el valor maximo que el servidor permite subir archivo
-        $max_size=(int)ini_get('upload_max_filesize')*1000;
-        //=====unir extensiones
-        $all_ext=implode(',',$this->allExtension());
+        try {
+            //=====obtiene el valor maximo que el servidor permite subir archivo
+            $max_size=(int)ini_get('upload_max_filesize')*1000;
+            //=====unir extensiones
+            $all_ext=implode(',',$this->allExtension());
 
-        $this->validate(request(),[
-                'file'=>'required|file|mimes:'.$all_ext.'|max:'.$max_size
-            ]
-        );
-
-        $upload= new File();
-        $file=$request->file('file');
-        $name=time().$file->getClientOriginalExtension();
-        $ext=$file->getClientOriginalExtension();
-        $type=$this->getType($ext);
-
-        if(Storage::putFileAs('/public/'.$this->getUserFolder().'/'.$type.'/',$file,$name.'.',$ext)){
-            $upload::create([
-                'ln_nombre'=>$name,
-                'ln_tipo'=>$type,
-                'ln_extension'=>$ext,
-                'id_nu_user'=>Auth::id()]
+            $this->validate(request(),[
+                    'file'=>'required|file|mimes:'.$all_ext.'|max:'.$max_size
+                ]
             );
-        }
 
-        return "Archivo subido";
+            $upload= new File();
+            $file=$request->file('file');
+            $name = $file->getClientOriginalName();
+            $ext=$file->getClientOriginalExtension();
+            $type=$this->getType($ext);
+            
+            
+            if(Storage::putFileAs('/public/' . $this->getUserFolder() . '/' . $type . '/', $file, $name . '.' . $ext)){
+                $upload::create([
+                    'ln_nombre'=>$name,
+                    'ln_tipo'=>$type,
+                    'ln_extension'=>$ext,
+                    'id_nu_user'=>Auth::id()]
+                );
+            }
+
+            
+        } catch (Exception $e) {
+            
+            
+        }
+        
+        //===retornamos un mensaje de sesion
+        //===info nombre de la sesion, se pasa el arreglo con el mensaje y la clase de boostrap
+        return back()->with('info',['success','El archivo se ha subido correctamente']);
 
     }
 
