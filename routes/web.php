@@ -23,8 +23,12 @@ Auth::routes();
 
 //===File
 Route::group(['prefix' => 'files'], function () {
-    Route::get('documents/','FilesController@index')->name('archivo.buscar');
-    Route::get('documents/crear','FilesController@create')->name('archivo.crear');
+    Route::get('documents/archivo','FilesController@create')->name('archivo.crear');
+    Route::get('documents/image','FilesController@image')->name('image.crear');
+    Route::get('documents/videos','FilesController@video')->name('videos.crear');
+    Route::get('documents/audios','FilesController@audio')->name('audios.crear');
+    Route::get('documents/documentos','FilesController@document')->name('documents.crear');
+
     Route::post('documents/subir','FilesController@store')->name('archivo.subir');
     Route::post('documents/editar/{id}','FilesController@edit')->name('archivo.editar');
     Route::post('documents/eliminar{id}','FilesController@destroy')->name('archivo.eliminar');

@@ -68,17 +68,18 @@
                 <ul class="collapse list-unstyled" id="filesSubmenu">
                     <li>
                         <a href="{{ route('archivo.crear') }}">Agregar archivos</a>
-                    </li> <li>
-                        <a href="#">Imágenes</a>
                     </li>
                     <li>
-                        <a href="#">Videos</a>
+                        <a href="{{ route('image.crear') }}">Imágenes</a>
                     </li>
                     <li>
-                        <a href="#">Documentos</a>
+                        <a href="{{ route('videos.crear') }}">Videos</a>
                     </li>
                     <li>
-                        <a href="#">Audio</a>
+                        <a href="{{ route('documents.crear') }}">Documentos</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('audios.crear') }}">Audio</a>
                     </li>
                 </ul>
             </li>
@@ -159,31 +160,10 @@
             </div>
         </nav>
 
-        @if(session('info'))
-        <div class="container">
-            <div class="alert alert-{{session('info')[0]}}" role="alert">
-                <span class="closebtn" onclick="this.parentElement.style.display='none;'">X</span>
-                <strong>Exito</strong> {{session('info')[1]}}
-            </div>
-        </div>
-        @endif
-        @if($errors->any())
-            <div class="container">
-                <div class="alert alert-danger" role="alert">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none;'">X</span>
-                    @foreach($errors->all() as $error)
-                        {{--$error--}}
-                        @if($error == 'validation.mimes')
-                        <strong>Error</strong> No se puede subir ese formato de archivo
-                        @endif
-                        @if($error == 'validation.max.file')
-                         <strong>Error </strong> El archivo excede el tamaño maximo
-                         @endif
-                    @endforeach
-                </div>
-            </div>
-        @endif
-@yield('content')
+        @include('admin.partials.alert')
+        @include('admin.partials.error')
+
+        @yield('content')
 
 <script src="{{ asset('js/slim.js')}}"></script><!-- Popper.JS -->
 
